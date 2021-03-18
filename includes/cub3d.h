@@ -197,7 +197,7 @@ void    			get_err1(int err);
 void    			get_err_2(int err);
 void    			get_err_3(int err);
 void				parse_color(t_all *all, char *line, int i);
-char				*save_text(char *line, int i);
+char				*save_text(t_all *all, char *line, int i);
 int					save_color(t_all *all, char *line, int i);
 void				check_ident(t_all *all, char *line);
 void        		parse_text(t_all *all, char *line, int i);
@@ -232,7 +232,7 @@ int					move_plr(t_all *all);
 void				launch_wall_text(t_all *all);
 t_text				get_text(char *txt, t_all *all);
 void				draw_text(t_all *all, int width, t_text *wall_text);
-int					check_color(t_all *all, int r, int g, int b);
+int					check_color_digit(t_all *all, int r, int g, int b);
 void				get_screen_size(t_all *all);
 void				launch_spr_text(t_all *all);
 void				spr_in_map(t_all *all);
@@ -256,5 +256,9 @@ char				*ft_strdup1(const char *s);
 char				*ft_strchr1(const char *str, int c);
 
 int		first_color(t_all *all, char *line, int i);
+
+void        parse_resol(t_all *all, char *line, int i);
+
+void	check_color_char(t_all *all, char *line);
 
 #endif

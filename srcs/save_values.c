@@ -1,19 +1,52 @@
 #include "../includes/cub3d.h"
 
-char	*save_text(char *line, int i)
+// char	*substr(char *str, int start, int length)
+// {
+//   char *s;
+//   // Определить длину исходной строки
+//   int len = 0;
+//   for (int i = 0; str[i] != '\0'; i++)
+//     len++;
+//   // Определить позицию последнего символа подстроки
+//   if (length > 0)
+//   {
+//     if (start + length < len)
+//       len = start + length;
+//   }
+//   else // length < 0
+//     len = len + length;
+//   int newlen = len - start + 1; // длина подстроки
+// //   s = new char[newlen];
+//   // Копирование символов подстроки
+//   int j = 0;
+//   for (int i = start; i<len; i++)
+//   {
+//     s[j] = str[i]; j++;
+//   }
+//   s[j] = '\0';
+//   return(s);
+// }
+
+char	*save_text(t_all *all, char *line, int i)
 {
 	char	*text;
+	// char	*str;
 
-	while ((line[i] >= 'a' && line[i] <= 'z') || 
+	if ((line[i] >= 'a' && line[i] <= 'z') || 
 		(line[i] >= 'A' && line[i] <= 'Z'))
 		i++;
+	if ((line[i] >= 'a' && line[i] <= 'z') || 
+		(line[i] >= 'A' && line[i] <= 'Z'))
+		i++;
+	if (line[i] != ' ')
+		close_prog(all, 25);
 	while (line[i] == ' ')
 		i++;
-	text = ft_strdup1(&line[i]);
+	text = ft_strdup(&line[i]);
 	return (text);
 }
 
-int		check_color(t_all *all, int r, int g, int b)
+int		check_color_digit(t_all *all, int r, int g, int b)
 {
 	int color;
 
@@ -23,14 +56,39 @@ int		check_color(t_all *all, int r, int g, int b)
 	return (color);
 }
 
-// int		first_color(t_all *all, char *line, int i)
-// {
-// 	int	r;
+void	check_color_char(t_all *all, char *line)
+{
+	int	i;
+	int	dig;
+	int	comma;
 
-// 	r = 0;
-	
-// 	return (r);
-// }
+	i = 1;
+	dig = 0;
+	comma = 0;
+	while (line[i])
+	{
+		if (line[i] == ' ')
+			i++;
+		else if (line[i] >= '0' && line[i] <= '9')
+		{
+			i++;
+			dig++;
+		}
+		else if (line[i] == ',')
+		{
+			if (dig == 0)
+				close_prog(all, 36);
+			dig = 0;
+			dig++;
+			comma++;
+			i++;
+		}
+		else
+			close_prog(all, 36);
+	}
+	if (comma != 2 || dig == 0)
+		close_prog(all, 36);
+}
 
 int		save_color(t_all *all, char *line, int i)
 {
@@ -42,40 +100,30 @@ int		save_color(t_all *all, char *line, int i)
 	g = 0;
 	b = 0;
 	i++;
+	check_color_char(all, line);
 	while (line[i] == ' ')
 		i++;
-	if (!(line[i] >= '0' && line[i] <= '9'))
-		close_prog(all, 35);
 	if (line[i] >= '0' && line[i] <= '9')
 		r = cub_atoi(line, &i);
-	i++;
 	while (line[i] == ' ')
 		i++;
-	if (line[i] != ',') // 2 color
-		close_prog(all, 16);
 	if (line[i] == ',')
 		i++;
 	while (line[i] == ' ')
 		i++;
-	if (!(line[i] >= '0' && line[i] <= '9'))
-		close_prog(all, 35);
 	if (line[i] >= '0' && line[i] <= '9')
 		g = cub_atoi(line, &i);
-	i++;
-	if (line[i] != ',') // 3 color
-		close_prog(all, 16);
+	while (line[i] == ' ')
+		i++;
 	if (line[i] == ',')
 		i++;
 	while (line[i] == ' ')
 		i++;
-	if (!(line[i] >= '0' && line[i] <= '9'))
-		close_prog(all, 35);
 	if (line[i] >= '0' && line[i] <= '9')
 		b = cub_atoi(line, &i);
-	i++;
 	if (line[i] != '\0')
 		close_prog(all, 35);
-	return (check_color(all, r, g, b));
+	return (check_color_digit(all, r, g, b));
 }
 
 void	get_map_memory(t_all *all)

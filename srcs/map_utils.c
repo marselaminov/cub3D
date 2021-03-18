@@ -123,6 +123,11 @@ void	map_borders(t_all *all)
 			// 	(all->map.map[str][val + 1] != '1' && val != all->map.col - 1) ||
 			// 	all->map.map[str - 1][val] != '1' || all->map.map[str + 1][val] != '1'))
 			// 	close_prog(all, 23);
+			if ((all->map.map[str][val] == '0' || all->map.map[str][val] == '2') && 
+				((all->map.map[str][val - 1] == ' ' && val != 0) ||
+				(all->map.map[str][val + 1] != ' ' && val != all->map.col - 1) ||
+				all->map.map[str - 1][val] != ' ' || all->map.map[str + 1][val] != ' '))
+				close_prog(all, 23);
 			val++;
 		}
 		str++;
@@ -153,6 +158,8 @@ void	mapchecking(t_all *all)
 		str++;
 		val = 0;
 	}
+	if (all->ident.plr != 1)
+		close_prog(all, 37);
 	we_ea_borders(all);
 	no_so_borders(all);
 	map_borders(all);

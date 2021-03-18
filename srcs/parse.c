@@ -1,13 +1,7 @@
 #include "../includes/cub3d.h"
 
-void        parse_line(t_all *all, char *line)
+void        parse_resol(t_all *all, char *line, int i)
 {
-    int     i;
-
-    i = 0;
-    while (line[i] == ' ')
-        i++;
-    check_ident(all, line);
     if (line[i] == 'R' && line[i + 1] == ' ' && all->ident.r == 0)
     {
         all->ident.r = 1;
@@ -20,7 +14,22 @@ void        parse_line(t_all *all, char *line)
 		    i++;
 	    if (line[i] >= '0' && line[i] <= '9')
 		    all->map.height = cub_atoi(line, &i);
+        if (line[i] != '\0')
+		    close_prog(all, 14);
     }
+    if (all->map.width == 0 || all->map.height == 0)
+        close_prog(all, 14);
+}
+
+void        parse_line(t_all *all, char *line)
+{
+    int     i;
+
+    i = 0;
+    while (line[i] == ' ')
+        i++;
+    check_ident(all, line);
+    parse_resol(all, line, i);
     parse_text(all, line, i);
     parse_color(all, line, i);
     parse_map(all, line);
@@ -85,7 +94,7 @@ int         parse_file(t_all *all, char *file)
         close_prog(all, 20);
     if (all->ident.map_rows == 0)
         close_prog(all, 20);
-    if (all->ident.map_rows - all->map.rows > 1)
+    if (all->ident.map_rows - all->map.rows > 0)
         close_prog(all, 20);
     mapsaving(all);
     mapchecking(all);

@@ -5,7 +5,7 @@ void    get_err_2(int err)
     if (err == 13)
 		ft_putstr_fd("Error\nceiling color is already defined\n", 1);
 	else if (err == 14)
-		ft_putstr_fd("Error\nresolution must be only numbers\n", 1);
+		ft_putstr_fd("Error\nincorrect resolution\n", 1);
 	else if (err == 15)
 		ft_putstr_fd("Error\ninvalid color character\n", 1);
 	else if (err == 16)
@@ -118,6 +118,8 @@ void    get_err_3(int err)
 		ft_putstr_fd("Error\nwrong char in map\n", 1);
 	else if (err == 35)
 		ft_putstr_fd("Error\ninvalid color\n", 1);
+	else if (err == 36)
+		ft_putstr_fd("Error\nwrong color char\n", 1);
 }
 
 int     close_prog(t_all *all, int err)
@@ -126,8 +128,10 @@ int     close_prog(t_all *all, int err)
 		get_err_1(err);
     if (err >= 13 && err <= 24)
         get_err_2(err);
-	if (err >= 25 && err <= 35)
+	if (err >= 25 && err <= 36)
 		get_err_3(err);
+	if (err == 37)
+		ft_putstr_fd("Error\nplayer not defined\n", 1);
 	close_spr(all);
 	close_map(all);
 	free(all->mlx.mlx);

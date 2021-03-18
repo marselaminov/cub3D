@@ -39,27 +39,27 @@ void        parse_text(t_all *all, char *line, int i)
     if (line[i] == 'N' && line[i + 1] == 'O' && all->ident.no == 0)
     {
         all->ident.no = 1;
-        all->map.north = save_text(line, i);
+        all->map.north = save_text(all, line, i);
     }
     if (line[i] == 'S' && line[i + 1] == 'O' && all->ident.so == 0)
     {
         all->ident.so = 1;
-        all->map.south = save_text(line, i);
+        all->map.south = save_text(all, line, i);
     }
     if (line[i] == 'W' && line[i + 1] == 'E' && all->ident.we == 0)
     {
         all->ident.we = 1;
-        all->map.west = save_text(line, i);
+        all->map.west = save_text(all, line, i);
     }
     if (line[i] == 'E' && line[i + 1] == 'A' && all->ident.ea == 0)
     {
         all->ident.ea = 1;
-        all->map.east = save_text(line, i);
+        all->map.east = save_text(all, line, i);
     }
     if (line[i] == 'S' && line[i + 1] == ' ' && all->ident.s == 0)
     {
         all->ident.s = 1;
-        all->map.sprite = save_text(line, i);
+        all->map.sprite = save_text(all, line, i);
     }
 }
 
