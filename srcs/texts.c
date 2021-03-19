@@ -20,13 +20,14 @@ void	drawn_on_screen(t_all *all, int width, int height)
 	else
 		wall_text = &all->north;
 	draw_text(all, width, wall_text);
-	height = all->rayc.draw_end - 1;
-	while (++height < all->map.height)
+	height = all->rayc.draw_end;
+	while (height < all->map.height)
 	{
-		all->mlx.addr[(height * all->mlx.line_length + width * 4) / 4] =
+		all->mlx.addr[((height * all->mlx.line_length) + (width * 4)) / 4] =
 			all->map.floor;
 		all->mlx.addr[width + (all->map.height - height - 1) * 
 			all->map.width] = all->map.ceiling;
+		height++;
 	}
 }
 

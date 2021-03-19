@@ -19,6 +19,8 @@
 
 # define BUFFER_SIZE 1000
 
+# define OK 49
+
 t_list			*g_rubbish;
 
 typedef struct		s_ident
@@ -260,5 +262,8 @@ int		first_color(t_all *all, char *line, int i);
 void        parse_resol(t_all *all, char *line, int i);
 
 void	check_color_char(t_all *all, char *line);
+
+int  zero_check(char **table, int i, int j);
+int  map_ok(int str, int val, t_all *all);
 
 #endif

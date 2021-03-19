@@ -32,6 +32,8 @@ void        parse_map(t_all *all, char *line)
     }
     else if (all->ident.map_rows)
         all->ident.map_rows++;
+    while(line[i] == ' ')
+        i++;
 }
 
 void        parse_text(t_all *all, char *line, int i)

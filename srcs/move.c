@@ -4,25 +4,23 @@ void	move_r_l(t_all *all)
 {
 	if (all->move.right == 1)
 	{
-		if (all->map.map[(int)(all->rayc.pos_y)][(int)(all->rayc.plane_x * all->move.move_speed 
-			+ all->rayc.pos_x)] != '1' && all->map.map[(int)(all->rayc.pos_y)]
-			[(int)(all->rayc.plane_x * all->move.move_speed + all->rayc.pos_x)] != '2')
-			all->rayc.pos_x += all->rayc.plane_x * all->move.move_speed;
-		if (all->map.map[(int)(all->rayc.pos_y + all->rayc.plane_y * all->move.move_speed)]
-			[(int)(all->rayc.pos_x)] != '1' && all->map.map[(int)(all->rayc.pos_y + 
-			all->rayc.plane_y * all->move.move_speed)][(int)(all->rayc.pos_x)] != '2')
-			all->rayc.pos_y += all->rayc.plane_y * all->move.move_speed;
+		if (all->map.map[(int)(all->rayc.dir_y * all->move.move_speed 
+			+ all->rayc.pos_x)][(int)(all->rayc.pos_y)] != '1' && all->map.map[(int)(all->rayc.dir_y * all->move.move_speed 
+			+ all->rayc.pos_x)][(int)(all->rayc.pos_y)] != '2')
+			all->rayc.pos_x += all->rayc.dir_y * all->move.move_speed;
+		if (all->map.map[(int)(all->rayc.pos_x)][(int)(all->rayc.pos_y - all->rayc.dir_x * all->move.move_speed)]
+			 != '1' && all->map.map[(int)(all->rayc.pos_x)][(int)(all->rayc.pos_y - all->rayc.dir_x * all->move.move_speed)] != '2')
+			all->rayc.pos_y -= all->rayc.dir_x * all->move.move_speed;
 	}
 	if (all->move.left == 1)
 	{
-		if (all->map.map[(int)(all->rayc.pos_y)][(int)(all->rayc.pos_x - all->rayc.plane_x *
-			all->move.move_speed)] != '1' && all->map.map[(int)(all->rayc.pos_y)][(int)
-			(all->rayc.pos_x - all->rayc.plane_x * all->move.move_speed)] != '2')
-			all->rayc.pos_x -= all->rayc.plane_x * all->move.move_speed;
-		if (all->map.map[(int)(all->rayc.pos_y - all->rayc.plane_y * all->move.move_speed)]
-			[(int)(all->rayc.pos_x)] != '1' && all->map.map[(int)(all->rayc.pos_y - 
-			all->rayc.plane_y * all->move.move_speed)][(int)(all->rayc.pos_x)] != '2')
-			all->rayc.pos_y -= all->rayc.plane_y * all->move.move_speed;
+		if (all->map.map[(int)(all->rayc.pos_x - all->rayc.dir_y *
+			all->move.move_speed)][(int)(all->rayc.pos_y)] != '1' && all->map.map[(int)(all->rayc.pos_x - all->rayc.dir_y *
+			all->move.move_speed)][(int)(all->rayc.pos_y)] != '2')
+			all->rayc.pos_x -= all->rayc.dir_y * all->move.move_speed;
+		if (all->map.map[(int)(all->rayc.pos_x)][(int)(all->rayc.pos_y + all->rayc.dir_x * all->move.move_speed)]
+			 != '1' && all->map.map[(int)(all->rayc.pos_x)][(int)(all->rayc.pos_y + all->rayc.dir_x * all->move.move_speed)] != '2')
+			all->rayc.pos_y += all->rayc.dir_x * all->move.move_speed;
 	}
 }
 

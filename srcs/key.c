@@ -12,10 +12,10 @@ int	keyrelease(int key, t_all *all)
 		all->move.up = 0;
 	if (key == S)
 		all->move.down = 0;
-	// if (key == D)
-	// 	all->move.right = 0;
-	// if (key == A)
-	// 	all->move.left = 0;
+	if (key == D)
+		all->move.right = 0;
+	if (key == A)
+		all->move.left = 0;
 	if (key == R)
 		all->move.rot_right = 0;
 	if (key == L) //
@@ -31,13 +31,13 @@ int	keypress(int key, t_all *all)
 		all->move.up = 1;
 	if (key == S)
 		all->move.down = 1;
-	// // if (key == D)
-	// // 	all->move.right = 1;
-	// // if (key == A)
-	// 	all->move.left = 1;
-	if (key == R) //
+	if (key == D)
+		all->move.right = 1;
+	if (key == A)
+		all->move.left = 1;
+	if (key == R)
 		all->move.rot_right = 1;
-	if (key == L) //
+	if (key == L)
 		all->move.rot_left = 1;
 	return (0);
 }
