@@ -31,12 +31,16 @@ void        parse_line(t_all *all, char *line)
     check_ident(all, line);
     if (line[i] == 'R' && line[i + 1] == ' ' && all->ident.r == 0)
         parse_resol(all, line, i);
+    while (line[i] == ' ')
+        i++;
     parse_text(all, line, i);
+    while (line[i] == ' ')
+        i++;
     parse_color(all, line, i);
     parse_map(all, line);
     if (line[i] != '1' && line[i] != '0' && line[i] != 'R' && line[i] != 'N' && 
         line[i] != 'S' && line[i] != 'E' && line[i] != 'W' &&
-        line[i] != 'F' && line[i] != 'C' && line[i] != '\0' && line[i] != ' ')
+        line[i] != 'F' && line[i] != 'C' && line[i] != '\0')
         close_prog(all, 19);
 }
 
@@ -95,8 +99,8 @@ int         parse_file(t_all *all, char *file)
         close_prog(all, 20);
     if (all->ident.map_rows == 0)
         close_prog(all, 20);
-    // if (all->ident.map_rows - all->map.rows > 0)
-    //     close_prog(all, 20);
+    if (all->ident.map_rows - all->map.rows > 0)
+        close_prog(all, 20);
     mapsaving(all);
     mapchecking(all);
     plr_direction(all);

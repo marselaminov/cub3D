@@ -49,7 +49,7 @@ void	no_so_borders(t_all *all)
 	{
 		if (all->map.map[1][val] == 'N' || all->map.map[1][val] == 'S' ||
 			all->map.map[1][val] == 'E' || all->map.map[1][val] == 'W' ||
-			all->map.map[1][val] == '0' || all->map.map[1][val] == '2' || all->map.map[1][val] == '1')
+			all->map.map[1][val] == '0' || all->map.map[1][val] == '2' /*|| all->map.map[1][val] == '1'*/)
 		{
 			if (all->map.map[0][val] != '1')
 				close_prog(all, 28);
@@ -71,8 +71,8 @@ void	no_so_borders(t_all *all)
 	{
 		if (all->map.map[all->map.rows - 2][val] == 'N' || all->map.map[all->map.rows - 2][val] == 'S' ||
 			all->map.map[all->map.rows - 2][val] == 'E' || all->map.map[all->map.rows - 2][val] == 'W' ||
-			all->map.map[all->map.rows - 2][val] == '0' || all->map.map[all->map.rows - 2][val] == '2' || 
-			all->map.map[all->map.rows - 2][val] == '1')
+			all->map.map[all->map.rows - 2][val] == '0' || all->map.map[all->map.rows - 2][val] == '2' /*|| 
+			all->map.map[all->map.rows - 2][val] == '1'*/)
 		{
 			if (all->map.map[all->map.rows - 1][val] != '1')
 				close_prog(all, 29);
@@ -108,34 +108,34 @@ void	map_borders(t_all *all)
 	int	str;
 	int	val;
 
-	str = 0;
-	while (str < all->map.rows)
+	str = 1;
+	while (str < all->map.rows - 1)
 	{
-		val = 0;
+		val = 1;
 		while (all->map.map[str][val])
 		{
 			if (all->map.map[str][val] == ' ' && 
 				((all->map.map[str][val - 1] == '0' && val != 0) ||
-				(all->map.map[str][val + 1] == '0' && val != all->map.col - 1) ||
+				(all->map.map[str][val + 1] == '0' && val != all->map.col - 1) /*||
 				all->map.map[str - 1][val] == '0' || all->map.map[str + 1][val] == '0' ||
-				all->map.map[str - 1][val - 1] == '0' || all->map.map[str - 1][val + 1] == '0' ||
-				all->map.map[str + 1][val - 1] == '0' || all->map.map[str + 1][val - 1] == '0'))
+				(all->map.map[str - 1][val - 1] == '0' && val != 0) || (all->map.map[str - 1][val + 1] == '0' && val != all->map.col - 1) ||
+				(all->map.map[str + 1][val - 1] == '0'  && val != 0) || (all->map.map[str + 1][val + 1] == '0' && val != all->map.col - 1)*/))
 				close_prog(all, 23);
 			if ((all->map.map[str][val] == '0' || all->map.map[str][val] == '2' || all->map.map[str][val] == 'N'
 				 || all->map.map[str][val] == 'S' || all->map.map[str][val] == 'E' || all->map.map[str][val] == 'W') && 
 				((all->map.map[str][val - 1] == '\0' && val != 0) ||
 				(all->map.map[str][val + 1] == '\0' && val != all->map.col - 1) ||
 				all->map.map[str - 1][val] == '\0' || all->map.map[str + 1][val] == '\0' ||
-				all->map.map[str - 1][val - 1] == '\0' || all->map.map[str - 1][val + 1] == '\0' ||
-				all->map.map[str + 1][val - 1] == '\0' || all->map.map[str + 1][val - 1] == '\0'))
+				(all->map.map[str - 1][val - 1] == ' ' && val != 0) || (all->map.map[str - 1][val + 1] == ' ' && val != all->map.col - 1) ||
+				(all->map.map[str + 1][val - 1] == ' '  && val != 0) || (all->map.map[str + 1][val + 1] == ' ' && val != all->map.col - 1)))
 				close_prog(all, 23);
 			if ((all->map.map[str][val] == '0' || all->map.map[str][val] == '2' || all->map.map[str][val] == 'N'
 				 || all->map.map[str][val] == 'S' || all->map.map[str][val] == 'E' || all->map.map[str][val] == 'W') && 
 				((all->map.map[str][val - 1] == ' ' && val != 0) ||
 				(all->map.map[str][val + 1] == ' ' && val != all->map.col - 1) ||
-				all->map.map[str - 1][val] == ' ' || all->map.map[str + 1][val] == ' ' ||
-				all->map.map[str - 1][val - 1] == ' ' || all->map.map[str - 1][val + 1] == ' ' ||
-				all->map.map[str + 1][val - 1] == ' ' || all->map.map[str + 1][val - 1] == ' '))
+				/*all->map.map[str - 1][val] == ' ' || all->map.map[str + 1][val] == ' ' ||*/
+				(all->map.map[str - 1][val - 1] == ' ' && val != 0) || (all->map.map[str - 1][val + 1] == ' ' && val != all->map.col - 1) /*||
+				(all->map.map[str + 1][val - 1] == ' '  && val != 0) || (all->map.map[str + 1][val + 1] == ' ' && val != all->map.col - 1))*/))
 				close_prog(all, 23);
 			// if (all->map.map[str][val] == ' ' && 
 			// 	((all->map.map[str][val - 1] != '1' && val != 0) ||

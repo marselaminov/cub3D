@@ -49,6 +49,11 @@ void	dda_init(t_all *all)
 			all->rayc.map_y += all->rayc.step_y;
 			all->rayc.side = 1;
 		}
+		if ((all->map.orientation == 'N' && all->map.map[all->rayc.map_x][all->rayc.map_y] == ' ' ) || 
+			(all->map.orientation == 'S' && all->map.map[all->rayc.map_x][all->rayc.map_y] == ' ' ) ||
+			(all->map.orientation == 'W' && all->map.map[all->rayc.map_x][all->rayc.map_y] == ' ' ) ||
+			(all->map.orientation == 'E' && all->map.map[all->rayc.map_x][all->rayc.map_y] == ' '))
+			close_prog(all, 23);
 		if (all->map.map[all->rayc.map_x][all->rayc.map_y] == '1')
 			all->rayc.hit = 1;
 	}

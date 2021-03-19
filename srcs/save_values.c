@@ -62,12 +62,14 @@ void	check_color_char(t_all *all, char *line)
 	int	dig;
 	int	comma;
 
-	i = 1;
+	i = 0;
 	dig = 0;
 	comma = 0;
 	while (line[i])
 	{
 		if (line[i] == ' ')
+			i++;
+		else if (line[i] == 'F' || line[i] == 'C')
 			i++;
 		else if (line[i] >= '0' && line[i] <= '9')
 		{
@@ -99,8 +101,8 @@ int		save_color(t_all *all, char *line, int i)
 	r = 0;
 	g = 0;
 	b = 0;
-	i++;
 	check_color_char(all, line);
+	i++;
 	while (line[i] == ' ')
 		i++;
 	if (line[i] >= '0' && line[i] <= '9')
