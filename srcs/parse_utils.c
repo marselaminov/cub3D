@@ -32,8 +32,12 @@ void        parse_map(t_all *all, char *line)
     }
     else if (all->ident.map_rows)
         all->ident.map_rows++;
-    while(line[i] == ' ')
-        i++;
+    // while(line[i] == ' ')
+    //     i++;
+    if (line[i] != '1' && line[i] != '0' && line[i] != 'R' && line[i] != 'N' && 
+        line[i] != 'S' && line[i] != 'E' && line[i] != 'W' &&
+        line[i] != 'F' && line[i] != 'C' && line[i] != '\0')
+        close_prog(all, 19);
 }
 
 void        parse_text(t_all *all, char *line, int i)

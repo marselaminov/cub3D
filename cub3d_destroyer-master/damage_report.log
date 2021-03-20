@@ -1,4 +1,4 @@
-Fri Mar 19 22:41:21 MSK 2021
+Sat Mar 20 12:02:56 MSK 2021
 
 
 =============== CUB3D DESTROYER - DAMAGE REPORT ===============
@@ -561,7 +561,7 @@ valid_maps/valid_tex_032.cub
 C 255,200,160
                                     NO ./wolftex/WALL54.xpm
 SO                                                                                                                              ./wolftex/WALL33.xpm
-EA ./wolftex/WALL64.xpm                                                                                                       
+EAsports ./wolftex/WALL64.xpm                                                                                                       
 WE ./wolftex/WALL64.xpm
 S ./wolftex/HEADH0.xpm
 F 122,122,122

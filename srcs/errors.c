@@ -149,25 +149,26 @@ int     close_prog(t_all *all, int err)
 	return (0);
 }
 
-void	check_ident(t_all *all, char *line)
+void	check_ident(t_all *all, char *line, int i)
 {
-	int i;
-
-	i = 0;
 	if (line[i] == 'R' && all->ident.r == 1)
 		close_prog(all, 6);
-	if (line[i] == 'N' && line[i + 1] == 'O' && all->ident.no == 1)
+	else if (line[i] == 'N' && line[i + 1] == 'O' && all->ident.no == 1)
 		close_prog(all, 7);
-	if (line[i] == 'S' && line[i + 1] == 'O' && all->ident.so == 1)
+	else if (line[i] == 'S' && line[i + 1] == 'O' && all->ident.so == 1)
 		close_prog(all, 8);
-	if (line[i] == 'E' && line[i + 1] == 'A' && all->ident.ea == 1)
+	else if (line[i] == 'E' && line[i + 1] == 'A' && all->ident.ea == 1)
 		close_prog(all, 9);
-	if (line[i] == 'W' && line[i + 1] == 'E' && all->ident.we == 1)
+	else if (line[i] == 'W' && line[i + 1] == 'E' && all->ident.we == 1)
 		close_prog(all, 10);
-	if (line[i] == 'S' && line[i + 1] == ' ' && all->ident.s == 1)
+	else if (line[i] == 'S' && line[i + 1] == ' ' && all->ident.s == 1)
 		close_prog(all, 11);
-	if (line[i] == 'F' && line[i + 1] == ' ' && all->ident.f == 1)
+	else if (line[i] == 'F' && line[i + 1] == ' ' && all->ident.f == 1)
 		close_prog(all, 12);
-	if (line[i] == 'C' && line[i + 1] == ' ' && all->ident.c == 1)
+	else if (line[i] == 'C' && line[i + 1] == ' ' && all->ident.c == 1)
 		close_prog(all, 13);
+	else if (line[0] == 0)
+		printf("Hehehe\n");
+	else
+		close_prog(all, 19);
 }

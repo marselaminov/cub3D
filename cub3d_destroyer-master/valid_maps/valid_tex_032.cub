@@ -1,7 +1,7 @@
 C 255,200,160
                                     NO ./wolftex/WALL54.xpm
 SO                                                                                                                              ./wolftex/WALL33.xpm
-EA ./wolftex/WALL64.xpm                                                                                                       
+EAsports ./wolftex/WALL64.xpm                                                                                                       
 WE ./wolftex/WALL64.xpm
 S ./wolftex/HEADH0.xpm
 F 122,122,122

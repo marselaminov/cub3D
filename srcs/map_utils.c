@@ -116,8 +116,8 @@ void	map_borders(t_all *all)
 		{
 			if (all->map.map[str][val] == ' ' && 
 				((all->map.map[str][val - 1] == '0' && val != 0) ||
-				(all->map.map[str][val + 1] == '0' && val != all->map.col - 1) /*||
-				all->map.map[str - 1][val] == '0' || all->map.map[str + 1][val] == '0' ||
+				(all->map.map[str][val + 1] == '0' && val != all->map.col - 1) ||
+				all->map.map[str - 1][val] == '0' || all->map.map[str + 1][val] == '0' /*||
 				(all->map.map[str - 1][val - 1] == '0' && val != 0) || (all->map.map[str - 1][val + 1] == '0' && val != all->map.col - 1) ||
 				(all->map.map[str + 1][val - 1] == '0'  && val != 0) || (all->map.map[str + 1][val + 1] == '0' && val != all->map.col - 1)*/))
 				close_prog(all, 23);
@@ -136,6 +136,11 @@ void	map_borders(t_all *all)
 				/*all->map.map[str - 1][val] == ' ' || all->map.map[str + 1][val] == ' ' ||*/
 				(all->map.map[str - 1][val - 1] == ' ' && val != 0) || (all->map.map[str - 1][val + 1] == ' ' && val != all->map.col - 1) /*||
 				(all->map.map[str + 1][val - 1] == ' '  && val != 0) || (all->map.map[str + 1][val + 1] == ' ' && val != all->map.col - 1))*/))
+				close_prog(all, 23);
+			if ((all->map.map[str][val] == 'N' || all->map.map[str][val] == 'S' || all->map.map[str][val] == 'E' || 
+				all->map.map[str][val] == 'W') && ((all->map.map[str][val - 1] == ' ' && val != 0) ||
+				(all->map.map[str][val + 1] == ' ' && val != all->map.col - 1) ||
+				all->map.map[str - 1][val] == ' ' || all->map.map[str + 1][val] == ' '))
 				close_prog(all, 23);
 			// if (all->map.map[str][val] == ' ' && 
 			// 	((all->map.map[str][val - 1] != '1' && val != 0) ||
@@ -223,6 +228,7 @@ void	mapchecking(t_all *all)
 		str++;
 		val = 0;
 	}
+	//printf("%s\n", all->map.map[2]);
 	if (all->ident.plr != 1)
 		close_prog(all, 37);
 	map_borders(all);
