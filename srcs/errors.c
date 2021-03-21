@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: legunshi <legunshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/21 18:41:12 by legunshi          #+#    #+#             */
+/*   Updated: 2021/03/21 18:46:36 by legunshi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
-void    get_err_2(int err)
+void	get_err_2(int err)
 {
-    if (err == 13)
+	if (err == 13)
 		ft_putstr_fd("Error\nceiling color is already defined\n", 1);
 	else if (err == 14)
 		ft_putstr_fd("Error\nincorrect resolution\n", 1);
@@ -28,21 +40,21 @@ void    get_err_2(int err)
 		ft_putstr_fd("Error\nproblem with the mlx library\n", 1);
 }
 
-void    get_err_1(int err)
+void	get_err_1(int err)
 {
-    if (err == 1)
-        ft_putstr_fd("Error\nmemory not allocated\n", 1);
-    else if (err == 2)
-        ft_putstr_fd("Error\nnumber of arguments incorrect\n", 1);
-    else if (err == 3)
-        ft_putstr_fd("Error\nthe file must end .cub\n", 1);
-    else if (err == 4)
-        ft_putstr_fd("Error\nthe second argument must be --save\n", 1);
-    else if (err == 5)
-        ft_putstr_fd("Error\nthis file doesn't open\n", 1);
-    else if (err == 6)
-        ft_putstr_fd("Error\nresolution already defined\n", 1);
-    else if (err == 7)
+	if (err == 1)
+		ft_putstr_fd("Error\nmemory not allocated\n", 1);
+	else if (err == 2)
+		ft_putstr_fd("Error\nnumber of arguments incorrect\n", 1);
+	else if (err == 3)
+		ft_putstr_fd("Error\nthe file must end .cub\n", 1);
+	else if (err == 4)
+		ft_putstr_fd("Error\nthe second argument must be --save\n", 1);
+	else if (err == 5)
+		ft_putstr_fd("Error\nthis file doesn't open\n", 1);
+	else if (err == 6)
+		ft_putstr_fd("Error\nresolution already defined\n", 1);
+	else if (err == 7)
 		ft_putstr_fd("Error\nnorth texture already defined\n", 1);
 	else if (err == 8)
 		ft_putstr_fd("Error\nsouth texture already defined\n", 1);
@@ -56,45 +68,7 @@ void    get_err_1(int err)
 		ft_putstr_fd("Error\nfloor color is already defined\n", 1);
 }
 
-void	close_spr(t_all *all)
-{
-	int	i;
-
-	i = 0;
-	if (all->spr != 0)
-	{
-		while (i < all->rayc.spr_num)
-		{
-			if (all->spr[i].addr)
-				mlx_destroy_image(all->mlx.mlx, all->spr[i].img);
-			if (all->mlx.mlx && all->mlx.mlx_win)
-				mlx_clear_window(all->mlx.mlx, all->mlx.mlx_win);
-			i++;
-		}
-	}
-	if (all->spr != 0)
-		free(all->spr);
-}
-
-void	close_map(t_all *all)
-{
-	int	i;
-
-	i = 0;
-	if (all->map.tmp != 0)
-		free(all->map.tmp);
-	if (all->map.map)
-	{
-		while (i <= all->map.rows)
-		{
-			free(all->map.map[i]);
-			i++;
-		}
-	}
-	free(all->map.map);
-}
-
-void    get_err_3(int err)
+void	get_err_3(int err)
 {
 	if (err == 25)
 		ft_putstr_fd("Error\nincorrect texture\n", 1);
@@ -122,18 +96,18 @@ void    get_err_3(int err)
 		ft_putstr_fd("Error\nwrong color char\n", 1);
 }
 
-int     close_prog(t_all *all, int err)
+int		close_prog(t_all *all, int err)
 {
 	if (err >= 1 && err <= 12)
 		get_err_1(err);
-    if (err >= 13 && err <= 24)
-        get_err_2(err);
+	if (err >= 13 && err <= 24)
+		get_err_2(err);
 	if (err >= 25 && err <= 36)
 		get_err_3(err);
 	if (err == 37)
 		ft_putstr_fd("Error\nplayer not defined\n", 1);
 	if (err == 38)
-		ft_putstr_fd("Error\ninvalid identificators\n", 1);	
+		ft_putstr_fd("Error\ninvalid identificators\n", 1);
 	close_spr(all);
 	close_map(all);
 	free(all->mlx.mlx);
@@ -169,8 +143,4 @@ void	check_ident(t_all *all, char *line, int i)
 		close_prog(all, 12);
 	else if (line[i] == 'C' && line[i + 1] == ' ' && all->ident.c == 1)
 		close_prog(all, 13);
-	// else if (line[0] == 0)
-	// 	printf("Hehehe\n");
-	// else
-	// 	close_prog(all, 19);
 }

@@ -4,7 +4,8 @@ SRCS = 		srcs/init_prog.c \
 			srcs/bitmap.c \
 			srcs/errors.c \
 			srcs/key.c \
-			srcs/map_utils.c \
+			srcs/map_utils1.c \
+			srcs/map_utils2.c \
 			srcs/move.c \
 			srcs/parse_utils.c \
 			srcs/parse.c \
@@ -13,6 +14,7 @@ SRCS = 		srcs/init_prog.c \
 			srcs/sprites.c \
 			srcs/texts.c \
 			srcs/utils.c \
+			srcs/utils2.c \
 			srcs/get_next_line.c \
 			srcs/get_next_line_utils.c
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bitmap.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: legunshi <legunshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/21 18:38:34 by legunshi          #+#    #+#             */
+/*   Updated: 2021/03/21 18:39:07 by legunshi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 int		get_fd(t_bmp *bmp, t_all *all)
@@ -33,7 +45,7 @@ void	header(t_bmp *bmp, t_all *all, int allsize)
 	bmp->allheader[28] = 24;
 }
 
-void		bitmap_main(t_all *all)
+void	bitmap_main(t_all *all)
 {
 	t_bmp	*bmp;
 	int		fd;

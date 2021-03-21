@@ -1,36 +1,20 @@
-#include "../includes/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   save_values.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: legunshi <legunshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/21 21:16:23 by legunshi          #+#    #+#             */
+/*   Updated: 2021/03/21 21:30:14 by legunshi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// char	*substr(char *str, int start, int length)
-// {
-//   char *s;
-//   // Определить длину исходной строки
-//   int len = 0;
-//   for (int i = 0; str[i] != '\0'; i++)
-//     len++;
-//   // Определить позицию последнего символа подстроки
-//   if (length > 0)
-//   {
-//     if (start + length < len)
-//       len = start + length;
-//   }
-//   else // length < 0
-//     len = len + length;
-//   int newlen = len - start + 1; // длина подстроки
-// //   s = new char[newlen];
-//   // Копирование символов подстроки
-//   int j = 0;
-//   for (int i = start; i<len; i++)
-//   {
-//     s[j] = str[i]; j++;
-//   }
-//   s[j] = '\0';
-//   return(s);
-// }
+#include "../includes/cub3d.h"
 
 char	*save_text(t_all *all, char *line, int i)
 {
 	char	*text;
-	// char	*str;
 	
 	if ((line[i] >= 'a' && line[i] <= 'z') || 
 		(line[i] >= 'A' && line[i] <= 'Z'))
@@ -55,6 +39,20 @@ int		check_color_digit(t_all *all, int r, int g, int b)
 	color = r * 256 * 256 + g * 256 + b;
 	return (color);
 }
+
+// void	check_color_char2(char *line, int i)
+// {
+// 	if (line[i] == ' ')
+// 			i++;
+// 		else if (line[i] == 'F' || line[i] == 'C')
+// 			i++;
+// }
+
+// void	check_comma(t_all *all, int comma, int digit)
+// {
+// 	if (comma != 2 || digit == 0)
+// 		close_prog(all, 36);
+// }
 
 void	check_color_char(t_all *all, char *line)
 {
@@ -91,6 +89,16 @@ void	check_color_char(t_all *all, char *line)
 	if (comma != 2 || dig == 0)
 		close_prog(all, 36);
 }
+
+// void	space_between(char *line, int i)
+// {
+// 	while (line[i] == ' ')
+// 		i++;
+// 	if (line[i] == ',')
+// 		i++;
+// 	while (line[i] == ' ')
+// 		i++;
+// }
 
 int		save_color(t_all *all, char *line, int i)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: legunshi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: legunshi <legunshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 19:32:08 by legunshi          #+#    #+#             */
-/*   Updated: 2020/11/29 17:18:29 by legunshi         ###   ########.fr       */
+/*   Updated: 2021/03/21 19:35:06 by legunshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,19 @@ char	*ft_strjoin1(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	i = 0;
+	i = -1;
 	j = 0;
 	if (!s2)
 		return (NULL);
 	if (!s1)
 		return ((ft_strdup1(s2)));
-	string = (char *)malloc(sizeof(char) * (ft_strlen1(s1) + ft_strlen1(s2) + 1));
-	if (!string)
+	if (!(string = (char *)malloc(sizeof(char) * (ft_strlen1(s1) +
+		ft_strlen1(s2) + 1))))
 		return (NULL);
-	while (s1[i])
-	{
+	while (s1[++i])
 		string[i] = s1[i];
-		i++;
-	}
 	while (s2[j])
-	{
 		string[i++] = s2[j++];
-	}
 	string[i] = '\0';
 	ft_lstadd_front(&g_rubbish, ft_lstnew((char *)string));
 	ft_lstadd_front(&g_rubbish, ft_lstnew((char *)s1));

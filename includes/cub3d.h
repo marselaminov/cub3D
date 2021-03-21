@@ -75,27 +75,27 @@ typedef struct		s_move
 
 typedef struct		s_raycast
 {
-	double			pos_x;//start pos plr
+	double			pos_x;
 	double			pos_y;
-	double			dir_x;//plr direction
+	double			dir_x;
 	double			dir_y;
-	double			plane_x;//plr camera plane
+	double			plane_x;
 	double			plane_y;
-	double			camera_x;//x-coordinate on the camera plane
-	double			raydir_x;//ray position and direction
+	double			camera_x;
+	double			raydir_x;
 	double			raydir_y;
-	double			deltdist_x;//length of ray from one x or y-side to next x or y-side
+	double			deltdist_x;
 	double			deltdist_y;
-	double			sidedist_x;//length of ray from current position to next x or y-side
+	double			sidedist_x;
 	double			sidedist_y; 
-	double			perp_walldist;//the length of the ray in the future (maybe)
-	int				map_x;//current square of the map the ray is in (which box of the map we're in)
+	double			perp_walldist;
+	int				map_x;
 	int				map_y;
-	int				step_x;//what direction to step in x or y-direction (either +1 or -1)
+	int				step_x;
 	int				step_y;
-	int				side;//was a NS or a EW wall hit?
-	int				hit;//was there a wall hit?
-	int				lineheight;//height of the vertical line that should be drawn
+	int				side;
+	int				hit;
+	int				lineheight;
 	int				draw_start;
 	int				draw_end;
 	int				spr_num;
@@ -202,7 +202,7 @@ void				parse_color(t_all *all, char *line, int i);
 char				*save_text(t_all *all, char *line, int i);
 int					save_color(t_all *all, char *line, int i);
 void				check_ident(t_all *all, char *line, int i);
-void        check_ident2(t_all *all, char *line, int i);
+void        		check_ident2(t_all *all, char *line, int i);
 void        		parse_text(t_all *all, char *line, int i);
 void        		parse_line(t_all *all, char *line);
 int         		parse_file(t_all *all, char *file);
@@ -213,9 +213,14 @@ void				get_map_memory(t_all *all);
 void				mapchecking(t_all *all);
 void				player_pos(t_all *all, int s, int v);
 void				we_ea_borders(t_all *all);
-void				no_so_borders(t_all *all);
-void				map_borders(t_all *all);
-void				plr_direction(t_all *all);
+void				no_borders(t_all *all);
+void				map_borders1(t_all *all);
+void				map_borders2(t_all *all);
+void				map_borders3(t_all *all);
+void				map_borders4(t_all *all);
+void				plr_direction1(t_all *all);
+void				plr_direction2(t_all *all);
+void				line_check(t_all *all);
 void				start_prog(t_all *all);
 void				launch_prog(t_all *all);
 void				init_raycast(t_all *all);
@@ -227,8 +232,8 @@ void				drawn_on_screen(t_all *all, int width, int height);
 int					keypress(int key, t_all *all);
 int					keyrelease(int key, t_all *all);
 int					keyexit(t_all *all);
-void				move_r_l(t_all *all);
-void				move_up_down(t_all *all);
+void				move_r(t_all *all);
+void				move_up(t_all *all);
 void				rotate_right(t_all *all);
 void				rotate_left(t_all *all);
 int					move_plr(t_all *all);
@@ -250,21 +255,24 @@ void				header(t_bmp *bmp, t_all *all, int allsize);
 void				close_map(t_all *all);
 void				close_spr(t_all *all);
 void				map_char_check(t_all *all, int s, int v);
-
 int     			get_next_line(int fd, char **line);
 int     			ft_check_func(char **line, char **buff, int bytes);
 size_t  			ft_strlen1(const char *str);
 char				*ft_strjoin1(char const *s1, char const *s2);
 char				*ft_strdup1(const char *s);
 char				*ft_strchr1(const char *str, int c);
-
-int		first_color(t_all *all, char *line, int i);
-
-void        parse_resol(t_all *all, char *line, int i);
-
-void	check_color_char(t_all *all, char *line);
-
-int  zero_check(char **table, int i, int j);
-int  map_ok(int str, int val, t_all *all);
+int					first_color(t_all *all, char *line, int i);
+void        		parse_resol(t_all *all, char *line, int i);
+void				check_color_char(t_all *all, char *line);
+int  				zero_check(char **table, int i, int j);
+int  				map_ok(int str, int val, t_all *all);
+void				move_l(t_all *all);
+void				move_down(t_all *all);
+void				so_borders(t_all *all);
+void				check_all_borders(t_all *all);
+void				line_check(t_all *all);
+// void	check_color_char2(char *line, int i);
+// void	check_comma(t_all *all, int comma, int digit);
+//void	space_between(char *line, int i);
 
 #endif
