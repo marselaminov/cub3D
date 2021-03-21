@@ -31,7 +31,7 @@ char	*save_text(t_all *all, char *line, int i)
 {
 	char	*text;
 	// char	*str;
-
+	
 	if ((line[i] >= 'a' && line[i] <= 'z') || 
 		(line[i] >= 'A' && line[i] <= 'Z'))
 		i++;
@@ -97,16 +97,21 @@ int		save_color(t_all *all, char *line, int i)
 	int	r;
 	int	g;
 	int	b;
+	int	count;
 
 	r = 0;
 	g = 0;
 	b = 0;
+	count = 0;
 	check_color_char(all, line);
 	i++;
 	while (line[i] == ' ')
 		i++;
 	if (line[i] >= '0' && line[i] <= '9')
+	{
 		r = cub_atoi(line, &i);
+		count += 1;
+	}
 	while (line[i] == ' ')
 		i++;
 	if (line[i] == ',')
@@ -114,7 +119,10 @@ int		save_color(t_all *all, char *line, int i)
 	while (line[i] == ' ')
 		i++;
 	if (line[i] >= '0' && line[i] <= '9')
+	{
 		g = cub_atoi(line, &i);
+		count += 1;
+	}
 	while (line[i] == ' ')
 		i++;
 	if (line[i] == ',')
@@ -122,7 +130,12 @@ int		save_color(t_all *all, char *line, int i)
 	while (line[i] == ' ')
 		i++;
 	if (line[i] >= '0' && line[i] <= '9')
+	{
 		b = cub_atoi(line, &i);
+		count += 1;
+	}
+	if (count != 3)
+		close_prog(all, 35);	
 	if (line[i] != '\0')
 		close_prog(all, 35);
 	return (check_color_digit(all, r, g, b));

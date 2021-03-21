@@ -202,6 +202,7 @@ void				parse_color(t_all *all, char *line, int i);
 char				*save_text(t_all *all, char *line, int i);
 int					save_color(t_all *all, char *line, int i);
 void				check_ident(t_all *all, char *line, int i);
+void        check_ident2(t_all *all, char *line, int i);
 void        		parse_text(t_all *all, char *line, int i);
 void        		parse_line(t_all *all, char *line);
 int         		parse_file(t_all *all, char *file);

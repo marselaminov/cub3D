@@ -1,4 +1,4 @@
-Sat Mar 20 12:02:56 MSK 2021
+суббота, 20 марта 2021 г. 23:56:38 (MSK)
 
 
 =============== CUB3D DESTROYER - DAMAGE REPORT ===============
@@ -6,34 +6,6 @@ Sat Mar 20 12:02:56 MSK 2021
 
 
 =====================[DESTROYED STUFF # 1]=====================
-./invalid_maps/invalid_RGB_000.cub
-R 1080 720
-NO ./wolftex/WALL54.xpm
-SO ./wolftex/WALL33.xpm
-EA ./wolftex/WALL64.xpm
-WE ./wolftex/WALL64.xpm
-S ./wolftex/HEADH0.xpm
-C 255,200,
-F 122,122,122
-
-11111111111111111
-10000000000000001
-10200000200000201
-10000000000000001
-10002000200020001
-10000000000000001
-10202020N02020201
-10000000000000001
-10002000200200001
-10000000000000001
-10200000200002001
-10000000000000001
-11111111111111111
-
-PARSER OUTPUT:
-
-
-=====================[DESTROYED STUFF # 2]=====================
 ./invalid_maps/invalid_map_area_008.cub
 R 1080 720
 NO ./wolftex/WALL54.xpm
@@ -61,7 +33,7 @@ F 122,122,122
 PARSER OUTPUT:
 
 
-=====================[DESTROYED STUFF # 3]=====================
+=====================[DESTROYED STUFF # 2]=====================
 ./invalid_maps/invalid_map_area_011.cub
 R 1080 720
 NO ./wolftex/WALL54.xpm
@@ -89,7 +61,7 @@ F 122,122,122
 PARSER OUTPUT:
 
 
-=====================[DESTROYED STUFF # 4]=====================
+=====================[DESTROYED STUFF # 3]=====================
 ./invalid_maps/invalid_map_area_025.cub
 R 1080 720
 NO ./wolftex/WALL54.xpm
@@ -117,7 +89,7 @@ F 122,122,122
 PARSER OUTPUT:
 
 
-=====================[DESTROYED STUFF # 5]=====================
+=====================[DESTROYED STUFF # 4]=====================
 ./invalid_maps/invalid_tex_NO_019.cub
 R 100 720
 N ./wolftex/WALL54.xpm
@@ -146,7 +118,7 @@ F 122,122,122
 PARSER OUTPUT:
 
 
-=====================[DESTROYED STUFF # 6]=====================
+=====================[DESTROYED STUFF # 5]=====================
 ./invalid_maps/invalid_tex_WE_019.cub
 R 100 720
 W ./wolftex/WALL54.xpm
@@ -175,7 +147,7 @@ F 122,122,122
 PARSER OUTPUT:
 
 
-=====================[DESTROYED STUFF # 7]=====================
+=====================[DESTROYED STUFF # 6]=====================
 valid_maps/valid_RGB_010.cub
 R 1080 720
 NO ./wolftex/WALL54.xpm
@@ -205,7 +177,7 @@ Error
 invalid color
 
 
-=====================[DESTROYED STUFF # 8]=====================
+=====================[DESTROYED STUFF # 7]=====================
 valid_maps/valid_map_area_001.cub
 R 1080 720
 NO ./wolftex/WALL54.xpm
@@ -249,7 +221,7 @@ Error
 invalid file
 
 
-=====================[DESTROYED STUFF # 9]=====================
+=====================[DESTROYED STUFF # 8]=====================
 valid_maps/valid_map_area_011.cub
 R 1080 720
 NO ./wolftex/WALL54.xpm
@@ -346,7 +318,7 @@ Error
 invalid file
 
 
-=====================[DESTROYED STUFF #10]=====================
+=====================[DESTROYED STUFF # 9]=====================
 valid_maps/valid_res_004.cub
 R 1080 720              
 NO ./wolftex/WALL54.xpm
@@ -376,7 +348,7 @@ Error
 incorrect resolution
 
 
-=====================[DESTROYED STUFF #11]=====================
+=====================[DESTROYED STUFF #10]=====================
 valid_maps/valid_tex_011.cub
 R 1080 720
 SO ./wolftex/WALL33.xpm
@@ -406,7 +378,7 @@ Error
 invalid line in file
 
 
-=====================[DESTROYED STUFF #12]=====================
+=====================[DESTROYED STUFF #11]=====================
 valid_maps/valid_tex_013.cub
 R 1080 720
 SO ./wolftex/WALL33.xpm
@@ -436,7 +408,7 @@ Error
 wrong color char
 
 
-=====================[DESTROYED STUFF #13]=====================
+=====================[DESTROYED STUFF #12]=====================
 valid_maps/valid_tex_014.cub
 R 1080 720 
 SO ./wolftex/WALL33.xpm	
@@ -466,7 +438,7 @@ Error
 incorrect resolution
 
 
-=====================[DESTROYED STUFF #14]=====================
+=====================[DESTROYED STUFF #13]=====================
 valid_maps/valid_tex_015.cub
 F 122,122,122
 SO 	./wolftex/WALL33.xpm
@@ -496,7 +468,7 @@ Error
 invalid line in file
 
 
-=====================[DESTROYED STUFF #15]=====================
+=====================[DESTROYED STUFF #14]=====================
 valid_maps/valid_tex_017.cub
 SO ./wolftex/WALL33.xpm
 EA ./wolftex/WALL64.xpm
@@ -526,7 +498,7 @@ Error
 invalid line in file
 
 
-=====================[DESTROYED STUFF #16]=====================
+=====================[DESTROYED STUFF #15]=====================
 valid_maps/valid_tex_022.cub
 F 122,122,122	
 SO ./wolftex/WALL33.xpm 
@@ -556,7 +528,7 @@ Error
 wrong color char
 
 
-=====================[DESTROYED STUFF #17]=====================
+=====================[DESTROYED STUFF #16]=====================
 valid_maps/valid_tex_032.cub
 C 255,200,160
                                     NO ./wolftex/WALL54.xpm

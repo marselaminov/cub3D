@@ -18,6 +18,23 @@ void        parse_resol(t_all *all, char *line, int i)
         close_prog(all, 14);
 }
 
+// void        check_ident2(t_all *all, char *line, int i)
+// {
+//     if (line[i] == 'N' && line[i + 1] != 'O' && line[i + 2] != ' ')
+//         close_prog(all, 38);
+//     else if ((line[i] == 'S' && line[i + 1] != 'O' && line[i + 2] != ' ') || 
+//             (line[i] == 'S' && line[i + 1] != ' '))
+//         close_prog(all, 38);
+//     else if (line[i] == 'E' && line[i + 1] != 'A' && line[i + 2] != ' ')
+//         close_prog(all, 38);
+//     else if (line[i] == 'W' && line[i + 1] != 'E' && line[i + 2] != ' ')
+//         close_prog(all, 38);
+//     else if (line[i] == 'F' && line[i + 1] != ' ')
+//         close_prog(all, 38);
+//     else if (line[i] == 'C' && line[i + 1] != ' ')
+//         close_prog(all, 38);
+// }
+
 void        parse_line(t_all *all, char *line)
 {
     int     i;
@@ -26,11 +43,27 @@ void        parse_line(t_all *all, char *line)
     while (line[i] == ' ')
         i++;
     check_ident(all, line, i);
+    //check_ident2(all, line, i);
+    if (line[i] == 'N' && line[i + 1] != 'O')
+        close_prog(all, 38);
+    //if ((line[i] == 'S' && line[i + 1] != 'O') || (line[i] == 'S' && line[i + 1] != ' '))
+        //close_prog(all, 38);
+    if (line[i] == 'W' && line[i + 1] != 'E')
+        close_prog(all, 38);
+    if (line[i] == 'E' && line[i + 1] != 'A')
+        close_prog(all, 38);
+    if (line[i] == 'R' && line[i + 1] != ' ')
+        close_prog(all, 38);
+    if (line[i] == 'F' && line[i + 1] != ' ')
+        close_prog(all, 38);
+    if (line[i] == 'C' && line[i + 1] != ' ')
+        close_prog(all, 38);
     if (line[i] == 'R' && line[i + 1] == ' ' && all->ident.r == 0)
         parse_resol(all, line, i);
     // while (line[i] == ' ')
     //     i++;
-    parse_text(all, line, i);
+    if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
+        parse_text(all, line, i);
     // while (line[i] == ' ')
     //     i++;
     parse_color(all, line, i);

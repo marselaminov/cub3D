@@ -132,6 +132,8 @@ int     close_prog(t_all *all, int err)
 		get_err_3(err);
 	if (err == 37)
 		ft_putstr_fd("Error\nplayer not defined\n", 1);
+	if (err == 38)
+		ft_putstr_fd("Error\ninvalid identificators\n", 1);	
 	close_spr(all);
 	close_map(all);
 	free(all->mlx.mlx);
@@ -167,8 +169,8 @@ void	check_ident(t_all *all, char *line, int i)
 		close_prog(all, 12);
 	else if (line[i] == 'C' && line[i + 1] == ' ' && all->ident.c == 1)
 		close_prog(all, 13);
-	else if (line[0] == 0)
-		printf("Hehehe\n");
-	else
-		close_prog(all, 19);
+	// else if (line[0] == 0)
+	// 	printf("Hehehe\n");
+	// else
+	// 	close_prog(all, 19);
 }
