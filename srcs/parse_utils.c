@@ -84,12 +84,12 @@ void	parse_color(t_all *all, char *line, int i)
 	if (line[i] == 'F' && line[i + 1] == ' ' && all->ident.f == 0)
 	{
 		all->ident.f = 1;
-		all->map.floor = save_color(all, line, i);
+		all->map.floor = save_color_main(all, line, i);
 	}
 	else if (line[i] == 'C' && line[i + 1] == ' ' && all->ident.c == 0)
 	{
 		all->ident.c = 1;
-		all->map.ceiling = save_color(all, line, i);
+		all->map.ceiling = save_color_main(all, line, i);
 	}
 }
 

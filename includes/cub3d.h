@@ -200,7 +200,7 @@ void    			get_err_2(int err);
 void    			get_err_3(int err);
 void				parse_color(t_all *all, char *line, int i);
 char				*save_text(t_all *all, char *line, int i);
-int					save_color(t_all *all, char *line, int i);
+int					save_color_main(t_all *all, char *line, int i);
 void				check_ident(t_all *all, char *line, int i);
 void        		check_ident2(t_all *all, char *line, int i);
 void        		parse_text(t_all *all, char *line, int i);
@@ -271,8 +271,7 @@ void				move_down(t_all *all);
 void				so_borders(t_all *all);
 void				check_all_borders(t_all *all);
 void				line_check(t_all *all);
-// void	check_color_char2(char *line, int i);
-// void	check_comma(t_all *all, int comma, int digit);
-//void	space_between(char *line, int i);
+int		save_color(char *line, int *i, int *count);
+int    colors_if(t_all *all, char *line, int *i, int *dig);
 
 #endif

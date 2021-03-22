@@ -1,4 +1,4 @@
-F                                       122         ,           122             ,           122
+F       122   ,   122  ,122
 
 SO   ./textures/redbrick.xpm
 
@@ -10,14 +10,13 @@ SO   ./textures/redbrick.xpm
 R 1080 720
 
 
-
-
-
      S  ./textures/barrel.xpm
 
 
+C      255  ,    200 ,   11
 
-C  255,200,                                                      160
+
+
 
 
 11111111111111111

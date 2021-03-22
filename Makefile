@@ -4,6 +4,7 @@ SRCS = 		srcs/init_prog.c \
 			srcs/bitmap.c \
 			srcs/errors.c \
 			srcs/key.c \
+			srcs/color.c \
 			srcs/map_utils1.c \
 			srcs/map_utils2.c \
 			srcs/move.c \

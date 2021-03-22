@@ -30,125 +30,6 @@ char	*save_text(t_all *all, char *line, int i)
 	return (text);
 }
 
-int		check_color_digit(t_all *all, int r, int g, int b)
-{
-	int color;
-
-	if ((r < 0 || r > 255) || (g < 0 || g > 255) || (b < 0 || b > 255))
-		close_prog(all, 17);
-	color = r * 256 * 256 + g * 256 + b;
-	return (color);
-}
-
-// void	check_color_char2(char *line, int i)
-// {
-// 	if (line[i] == ' ')
-// 			i++;
-// 		else if (line[i] == 'F' || line[i] == 'C')
-// 			i++;
-// }
-
-// void	check_comma(t_all *all, int comma, int digit)
-// {
-// 	if (comma != 2 || digit == 0)
-// 		close_prog(all, 36);
-// }
-
-void	check_color_char(t_all *all, char *line)
-{
-	int	i;
-	int	dig;
-	int	comma;
-
-	i = 0;
-	dig = 0;
-	comma = 0;
-	while (line[i])
-	{
-		if (line[i] == ' ')
-			i++;
-		else if (line[i] == 'F' || line[i] == 'C')
-			i++;
-		else if (line[i] >= '0' && line[i] <= '9')
-		{
-			i++;
-			dig++;
-		}
-		else if (line[i] == ',')
-		{
-			if (dig == 0)
-				close_prog(all, 36);
-			dig = 0;
-			dig++;
-			comma++;
-			i++;
-		}
-		else
-			close_prog(all, 36);
-	}
-	if (comma != 2 || dig == 0)
-		close_prog(all, 36);
-}
-
-// void	space_between(char *line, int i)
-// {
-// 	while (line[i] == ' ')
-// 		i++;
-// 	if (line[i] == ',')
-// 		i++;
-// 	while (line[i] == ' ')
-// 		i++;
-// }
-
-int		save_color(t_all *all, char *line, int i)
-{
-	int	r;
-	int	g;
-	int	b;
-	int	count;
-
-	r = 0;
-	g = 0;
-	b = 0;
-	count = 0;
-	check_color_char(all, line);
-	i++;
-	while (line[i] == ' ')
-		i++;
-	if (line[i] >= '0' && line[i] <= '9')
-	{
-		r = cub_atoi(line, &i);
-		count += 1;
-	}
-	while (line[i] == ' ')
-		i++;
-	if (line[i] == ',')
-		i++;
-	while (line[i] == ' ')
-		i++;
-	if (line[i] >= '0' && line[i] <= '9')
-	{
-		g = cub_atoi(line, &i);
-		count += 1;
-	}
-	while (line[i] == ' ')
-		i++;
-	if (line[i] == ',')
-		i++;
-	while (line[i] == ' ')
-		i++;
-	if (line[i] >= '0' && line[i] <= '9')
-	{
-		b = cub_atoi(line, &i);
-		count += 1;
-	}
-	if (count != 3)
-		close_prog(all, 35);	
-	if (line[i] != '\0')
-		close_prog(all, 35);
-	return (check_color_digit(all, r, g, b));
-}
-
 void	get_map_memory(t_all *all)
 {
 	int	i;
@@ -173,7 +54,6 @@ void	get_map_memory(t_all *all)
 	while (i < all->map.rows)
 	{
 		if (!(all->map.map[i] = ft_calloc(sizeof(char), (all->map.col + 1))))
-		// if (!(all->map.map = malloc(sizeof(char*) * (all->map.col + 1))))
 			close_prog(all, 1);
 		i++;
 	}
