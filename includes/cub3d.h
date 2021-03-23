@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: legunshi <legunshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/22 20:46:40 by legunshi          #+#    #+#             */
+/*   Updated: 2021/03/22 20:52:18 by legunshi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -21,7 +33,7 @@
 
 # define OK 49
 
-t_list			*g_rubbish;
+t_list				*g_rubbish;
 
 typedef struct		s_ident
 {
@@ -87,7 +99,7 @@ typedef struct		s_raycast
 	double			deltdist_x;
 	double			deltdist_y;
 	double			sidedist_x;
-	double			sidedist_y; 
+	double			sidedist_y;
 	double			perp_walldist;
 	int				map_x;
 	int				map_y;
@@ -175,39 +187,39 @@ typedef struct		s_bmp
 typedef struct		s_all
 {
 	t_map			map;
-	t_raycast       rayc;
+	t_raycast		rayc;
 	t_rayspr		rays;
-	t_move          move;
+	t_move			move;
 	t_colors		color;
-	t_text		    north;
-	t_text		    south;
-	t_text		    east;
-	t_text          west;
-	t_ident         ident;
+	t_text			north;
+	t_text			south;
+	t_text			east;
+	t_text			west;
+	t_ident			ident;
 	t_mlx			mlx;
 	t_sprite		*spr;
 	int				save;
 
 }					t_all;
 
-void    			create_frame(t_all *all);
+void				create_frame(t_all *all);
 int					close_prog(t_all *all, int err);
 int					cubcheck(char *s);
-int     			savecheck(char *arg, char *save);
+int					savecheck(char *arg, char *save);
 int					cub_atoi(char *line, int *i);
-void    			get_err1(int err);
-void    			get_err_2(int err);
-void    			get_err_3(int err);
+void				get_err1(int err);
+void				get_err_2(int err);
+void				get_err_3(int err);
 void				parse_color(t_all *all, char *line, int i);
 char				*save_text(t_all *all, char *line, int i);
 int					save_color_main(t_all *all, char *line, int i);
 void				check_ident(t_all *all, char *line, int i);
-void        		check_ident2(t_all *all, char *line, int i);
-void        		parse_text(t_all *all, char *line, int i);
-void        		parse_line(t_all *all, char *line);
-int         		parse_file(t_all *all, char *file);
-void        		parse_map(t_all *all, char *line);
-void        		make_map(t_all *all, char *line);
+void				check_ident2(t_all *all, char *line, int i);
+void				parse_text(t_all *all, char *line, int i);
+void				parse_line(t_all *all, char *line);
+int					parse_file(t_all *all, char *file);
+void				parse_map(t_all *all, char *line);
+void				make_map(t_all *all, char *line);
 void				mapsaving(t_all *all);
 void				get_map_memory(t_all *all);
 void				mapchecking(t_all *all);
@@ -255,23 +267,26 @@ void				header(t_bmp *bmp, t_all *all, int allsize);
 void				close_map(t_all *all);
 void				close_spr(t_all *all);
 void				map_char_check(t_all *all, int s, int v);
-int     			get_next_line(int fd, char **line);
-int     			ft_check_func(char **line, char **buff, int bytes);
-size_t  			ft_strlen1(const char *str);
+int					get_next_line(int fd, char **line);
+int					ft_check_func(char **line, char **buff, int bytes);
+size_t				ft_strlen1(const char *str);
 char				*ft_strjoin1(char const *s1, char const *s2);
 char				*ft_strdup1(const char *s);
 char				*ft_strchr1(const char *str, int c);
 int					first_color(t_all *all, char *line, int i);
-void        		parse_resol(t_all *all, char *line, int i);
+void				parse_resol(t_all *all, char *line, int i);
 void				check_color_char(t_all *all, char *line);
-int  				zero_check(char **table, int i, int j);
-int  				map_ok(int str, int val, t_all *all);
+int					zero_check(char **table, int i, int j);
+int					map_ok(int str, int val, t_all *all);
 void				move_l(t_all *all);
 void				move_down(t_all *all);
 void				so_borders(t_all *all);
 void				check_all_borders(t_all *all);
 void				line_check(t_all *all);
-int		save_color(char *line, int *i, int *count);
-int    colors_if(t_all *all, char *line, int *i, int *dig);
+int					save_color(char *line, int *i, int *count);
+int					colors_if(t_all *all, char *line, int *i, int *dig);
+void				checkkk(t_all *all, int *dig);
+void				sprite_sorting(t_all *all);
+void				drawn_on_screen_utils(t_all *all);
 
 #endif

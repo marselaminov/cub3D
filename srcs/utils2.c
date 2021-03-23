@@ -6,7 +6,7 @@
 /*   By: legunshi <legunshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 18:39:52 by legunshi          #+#    #+#             */
-/*   Updated: 2021/03/21 19:57:59 by legunshi         ###   ########.fr       */
+/*   Updated: 2021/03/22 20:39:31 by legunshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,11 @@ void	close_map(t_all *all)
 		}
 	}
 	free(all->map.map);
+}
+
+void	drawn_on_screen_utils(t_all *all)
+{
+	all->rayc.lineheight = (int)(all->map.height / all->rayc.perp_walldist);
+	all->rayc.draw_start = all->map.height / 2 - all->rayc.lineheight / 2;
+	all->rayc.draw_end = all->map.height / 2 + all->rayc.lineheight / 2;
 }

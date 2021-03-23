@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: legunshi <legunshi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/22 19:59:07 by legunshi          #+#    #+#             */
+/*   Updated: 2021/03/22 20:06:06 by legunshi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 int		check_color_digit(t_all *all, int r, int g, int b)
@@ -10,34 +22,39 @@ int		check_color_digit(t_all *all, int r, int g, int b)
 	return (color);
 }
 
+void	checkkk(t_all *all, int *dig)
+{
+	if ((*dig) == 0)
+		close_prog(all, 36);
+}
+
 int		colors_if(t_all *all, char *line, int *i, int *dig)
 {
-    int comma;
-    
-    comma = 0;
-    while (line[*i])
-    {
-        if (line[*i] == ' ')
+	int	comma;
+
+	comma = 0;
+	while (line[*i])
+	{
+		if (line[*i] == ' ')
 			(*i)++;
-	    else if (line[*i] == 'F' || line[*i] == 'C')
-		    (*i)++;
-	    else if (line[*i] >= '0' && line[*i] <= '9')
-	    {
-		    (*i)++;
-		    (*dig)++;
-	    }
-        else if (line[*i] == ',')
-	    {
-		    if ((*dig) == 0)
-			    close_prog(all, 36);
-		    (*dig) = 1;
-		    comma++;
-		    (*i)++;
-        }
-	    else
-		    close_prog(all, 36);
-    }
-    return (comma);
+		else if (line[*i] == 'F' || line[*i] == 'C')
+			(*i)++;
+		else if (line[*i] >= '0' && line[*i] <= '9')
+		{
+			(*i)++;
+			(*dig)++;
+		}
+		else if (line[*i] == ',')
+		{
+			checkkk(all, dig);
+			(*dig) = 1;
+			comma++;
+			(*i)++;
+		}
+		else
+			close_prog(all, 36);
+	}
+	return (comma);
 }
 
 void	check_color_char(t_all *all, char *line)
@@ -75,31 +92,4 @@ int		save_color(char *line, int *i, int *count)
 	while (line[*i] == ' ')
 		(*i)++;
 	return (save);
-}
-
-int		save_color_main(t_all *all, char *line, int i)
-{
-	int	r;
-	int	g;
-	int	b;
-	int	count;
-
-	r = 0;
-	g = 0;
-	b = 0;
-	count = 0;
-	check_color_char(all, line);
-	i++;
-	r = save_color(line, &i, &count);
-	g = save_color(line, &i, &count);
-	if (line[i] >= '0' && line[i] <= '9')
-	{
-		b = cub_atoi(line, &i);
-		count += 1;
-	}
-	if (count != 3)
-		close_prog(all, 35);	
-	if (line[i] != '\0')
-		close_prog(all, 35);
-	return (check_color_digit(all, r, g, b));
 }

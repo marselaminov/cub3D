@@ -6,11 +6,36 @@
 /*   By: legunshi <legunshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 19:17:33 by legunshi          #+#    #+#             */
-/*   Updated: 2021/03/21 19:33:41 by legunshi         ###   ########.fr       */
+/*   Updated: 2021/03/22 20:22:49 by legunshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	init_sprite(t_all *all)
+{
+	int	i;
+
+	sprite_sorting(all);
+	i = 0;
+	while (i < all->rayc.spr_num)
+	{
+		all->rays.x = all->spr[all->spr[i].order].x - all->rayc.pos_x;
+		all->rays.y = all->spr[all->spr[i].order].y - all->rayc.pos_y;
+		all->rays.inv_det = 1.0 / (all->rayc.plane_x * all->rayc.dir_y -
+		all->rayc.dir_x * all->rayc.plane_y);
+		all->rays.transform_x = all->rays.inv_det * (all->rayc.dir_y *
+		all->rays.x - all->rayc.dir_x * all->rays.y);
+		all->rays.transform_y = all->rays.inv_det * (-all->rayc.plane_y *
+		all->rays.x + all->rayc.plane_x * all->rays.y);
+		all->rays.screen_x = (int)((all->map.width / 2) *
+		(1 + all->rays.transform_x / all->rays.transform_y));
+		all->rays.h = abs((int)(all->map.height / all->rays.transform_y));
+		draw_coords(all);
+		stripe_loop(all, i);
+		i++;
+	}
+}
 
 void	create_frame(t_all *all)
 {

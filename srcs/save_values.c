@@ -6,7 +6,7 @@
 /*   By: legunshi <legunshi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 21:16:23 by legunshi          #+#    #+#             */
-/*   Updated: 2021/03/21 21:30:14 by legunshi         ###   ########.fr       */
+/*   Updated: 2021/03/22 20:09:36 by legunshi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 char	*save_text(t_all *all, char *line, int i)
 {
 	char	*text;
-	
-	if ((line[i] >= 'a' && line[i] <= 'z') || 
+
+	if ((line[i] >= 'a' && line[i] <= 'z') ||
 		(line[i] >= 'A' && line[i] <= 'Z'))
 		i++;
-	if ((line[i] >= 'a' && line[i] <= 'z') || 
+	if ((line[i] >= 'a' && line[i] <= 'z') ||
 		(line[i] >= 'A' && line[i] <= 'Z'))
 		i++;
 	if (line[i] != ' ')
@@ -28,6 +28,33 @@ char	*save_text(t_all *all, char *line, int i)
 		i++;
 	text = ft_strdup(&line[i]);
 	return (text);
+}
+
+int		save_color_main(t_all *all, char *line, int i)
+{
+	int	r;
+	int	g;
+	int	b;
+	int	count;
+
+	r = 0;
+	g = 0;
+	b = 0;
+	count = 0;
+	check_color_char(all, line);
+	i++;
+	r = save_color(line, &i, &count);
+	g = save_color(line, &i, &count);
+	if (line[i] >= '0' && line[i] <= '9')
+	{
+		b = cub_atoi(line, &i);
+		count += 1;
+	}
+	if (count != 3)
+		close_prog(all, 35);
+	if (line[i] != '\0')
+		close_prog(all, 35);
+	return (check_color_digit(all, r, g, b));
 }
 
 void	get_map_memory(t_all *all)
